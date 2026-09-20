@@ -4,8 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
-    <script type="module" crossorigin src="/portfoliov2/assets/index-CjCadOAt.js"></script>
-    <link rel="stylesheet" crossorigin href="/portfoliov2/assets/index-CmKTTRU7.css">
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      // This script checks to see if a redirect is present in the query string,
+      // converts it back into the correct url and adds it to the
+      // browser's history using window.history.replaceState(...),
+      // which won't cause the browser to attempt to load the new url.
+      (function(location) {
+        if (location.search[1] === '/' ) {
+          var decodedPath = location.search.slice(1).split('&').map(function(querySegment) { 
+            return querySegment.replace(/~and~/g, '&');
+          }).join('?');
+          window.history.replaceState(null, null,
+              location.pathname.slice(0, -1) + decodedPath + location.hash
+          );
+        }
+      }(window.location))
+    </script>
+    <script type="module" crossorigin src="/portfoliov2/assets/index-B9Jpza3m.js"></script>
+    <link rel="stylesheet" crossorigin href="/portfoliov2/assets/index-IvMtqnD9.css">
   </head>
   <body>
     <div id="root"></div>
