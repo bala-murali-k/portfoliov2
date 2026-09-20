@@ -144,3 +144,32 @@
 [data-style='minimal'] [data-action-btn] {
    font-family: var(--font-header, 'Stack Sans Headline', sans-serif);
 }
+
+[data-style='minimal'] [data-section-type="timeline"],
+[data-style='minimal'] [data-component="about-section-2"] {
+   font-family: var(--font-header, 'Stack Sans Headline', sans-serif);
+}
+
+[data-style='minimal'] [data-slot="timeline-role"] {
+   font-family: var(--font-hero, 'Mozilla Headline', cursive, sans-serif);
+}
+
+[data-style='minimal'] [data-slot="timeline-period"] {
+   font-family: var(--font-header, 'Syncopate', sans-serif);
+}
+
+[data-style='minimal'] [data-section-type="workprocess"] h2 {
+   font-family: var(--font-header, 'Stack Sans Headline', sans-serif);
+}
+
+[data-style='minimal'] [data-component='about-inside-mind'] [data-slot="step-title"] {
+   font-family: var(--font-hero, 'Mozilla Headline', cursive, sans-serif);
+}
+
+[data-style='minimal'] [data-component='about-inside-mind'] [data-slot="step-num"] {
+   font-family: var(--font-header, 'Syncopate', sans-serif);
+}
+
+[data-style='minimal'] [data-component-section='mind-tags'] {
+   font-family: var(--font-header, 'Stack Sans Headline', sans-serif);
+}

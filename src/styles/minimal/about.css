@@ -6,6 +6,15 @@
     }
 }
 
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 /* Hero style */
 [data-style='minimal'] [data-component='about-section-1'] {
     width: var(--minimal-content-width);
@@ -86,9 +95,290 @@
     line-height: 1;
 }
 
+/* Timeline style */
+[data-style='minimal'] [data-section-type='timeline'],
+[data-style='minimal'] [data-component='about-section-2'] {
+    width: var(--minimal-content-width);
+    height: var(--minimal-content-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10%;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    position: relative;
+}
 
+[data-style='minimal'] [data-component='about-timeline-section'] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.25rem;
+    width: 100%;
+    max-width: 52rem;
+    overflow: visible;
+}
+
+/* Inter-section S-curve connector */
+[data-style='minimal'] [data-slot='timeline-inter-connector'] {
+    position: absolute;
+    top: 50%;
+    left: calc(50% + min(26rem, 40%));
+    width: calc(var(--minimal-content-width) - min(52rem, 80%));
+    height: 200px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 5;
+    overflow: visible;
+}
+
+[data-style='minimal'] [data-slot='connector-svg'] {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+[data-style='minimal'] [data-slot='connector-path'] {
+    fill: none;
+    stroke: var(--color-accent);
+    stroke-width: 2px;
+    stroke-dasharray: 6 5;
+    opacity: 0.65;
+    transition: opacity 0.3s ease;
+}
+
+[data-style='minimal'] [data-section-type='timeline']:hover [data-slot='connector-path'] {
+    opacity: 1;
+}
+
+[data-style='minimal'] [data-slot='connector-node'] {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+[data-style='minimal'] [data-slot='connector-ring'] {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid var(--color-accent);
+    border-radius: 50%;
+    opacity: 0.45;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+[data-style='minimal'] [data-slot='connector-dot'] {
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    opacity: 0.9;
+    box-shadow: 0 0 8px var(--color-accent);
+    transition: transform 0.3s ease;
+}
+
+[data-style='minimal'] [data-section-type='timeline']:hover [data-slot='connector-ring'] {
+    opacity: 0.9;
+    transform: scale(1.15);
+}
+
+[data-style='minimal'] [data-section-type='timeline']:hover [data-slot='connector-dot'] {
+    transform: scale(1.2);
+}
+
+[data-style='minimal'] [data-component-section='timeline-item'] {
+    display: grid;
+    grid-template-columns: 140px 24px 1fr;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 0.5rem 0;
+    position: relative;
+    z-index: 2;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+[data-style='minimal'] [data-component-section='timeline-item']:hover {
+    transform: translateX(4px);
+}
+
+[data-style='minimal'] [data-slot='timeline-period'] {
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    letter-spacing: 0.05em;
+    padding-top: 0.25rem;
+    text-align: right;
+    opacity: 0.85;
+    font-variant-numeric: tabular-nums;
+}
+
+[data-style='minimal'] [data-slot='timeline-icon'] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent);
+    padding-top: 0.25rem;
+    opacity: 0.6;
+}
+
+[data-style='minimal'] [data-component-section='timeline-item']:hover [data-slot='timeline-icon'] {
+    opacity: 1;
+    color: var(--color-accent);
+}
+
+[data-style='minimal'] [data-slot='timeline-body'] {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+[data-style='minimal'] [data-slot='timeline-role'] {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: var(--color-foreground);
+    letter-spacing: 0.02em;
+}
+
+[data-style='minimal'] [data-slot='timeline-org'] {
+    font-size: 0.9rem;
+    color: var(--color-accent);
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+[data-style='minimal'] [data-slot='timeline-summary'] {
+    margin: 0.4rem 0 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-foreground);
+    opacity: 0.7;
+    font-weight: 300;
+}
+
+/* Work Process ("Inside Mind") style - mirrors the intro section's aesthetic */
+[data-style='minimal'] [data-section-type='workprocess'] {
+    width: var(--minimal-content-width);
+    height: var(--minimal-content-height);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: lighter;
+    margin: 0;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+[data-style='minimal'] [data-component='about-inside-mind'] {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: lighter;
+    margin: 0;
+    flex: 1;
+}
+
+[data-style='minimal'] [data-component-section='mind-content'] {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+[data-style='minimal'] [data-component-section='mind-content'] h2 {
+    font-size: 3rem;
+    color: var(--color-accent);
+    font-weight: lighter;
+    margin: 0 0 2rem 0;
+}
+
+[data-style='minimal'] [data-component-section='mind-steps'] {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+[data-style='minimal'] [data-component-section='mind-step-row'] {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    padding: 0.75rem 1rem 0.75rem 2rem;
+    margin: 0;
+    font-weight: lighter;
+    word-spacing: 0.15rem;
+    border-left: 1px solid var(--color-border);
+    transition: border-color 0.25s ease, transform 0.2s ease;
+}
+
+[data-style='minimal'] [data-component-section='mind-step-row']:hover {
+    border-left-color: var(--color-accent);
+    transform: translateX(4px);
+}
+
+[data-style='minimal'] [data-slot='step-num'] {
+    font-size: 0.9rem;
+    color: var(--color-accent);
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+    flex-shrink: 0;
+    letter-spacing: 0.05em;
+}
+
+[data-style='minimal'] [data-slot='step-title'] {
+    font-size: 1.25rem;
+    color: var(--color-foreground);
+    font-weight: 400;
+    flex-shrink: 0;
+    min-width: 8rem;
+    letter-spacing: 0.02em;
+}
+
+[data-style='minimal'] [data-slot='step-desc'] {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-foreground);
+    opacity: 0.75;
+    font-weight: 300;
+}
+
+[data-style='minimal'] [data-component-section='mind-tags'] {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2.5rem;
+}
+
+[data-style='minimal'] [data-component-section='mind-tags'] span {
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    color: var(--color-foreground);
+    opacity: 0.85;
+}
+
+[data-style='minimal'] [data-component-section='mind-tags'] span[data-slot='separator'] {
+    color: var(--color-accent);
+    font-size: 0.75em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: center;
+    animation: spin 8s linear infinite;
+    opacity: 1;
+}
 
 /* Finisher style */
+[data-style='minimal'] [data-component-type="finish"],
 [data-style='minimal'] [data-component="about-section-5"] {
     position: relative;
 }

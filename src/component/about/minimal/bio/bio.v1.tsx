@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import type { MinimalHeroContent } from '@content/about/minimal/about.content';
 import { ArrowRight } from "lucide-react";
+import { requestMinimalScroll } from "@/utils/hooks/minimal/use.minimal.scroll";
 
 interface MastheadProps {
   content: MinimalHeroContent;
@@ -43,7 +44,14 @@ export default function MastheadV1({ content }: MastheadProps) {
       {
         content.actionLabel && (
           <div>
-            <a type="button" data-action-btn>
+            <a
+              type="button"
+              data-action-btn
+              onClick={(e) => {
+                e.preventDefault();
+                requestMinimalScroll(22);
+              }}
+            >
               {content.actionLabel}
               <ArrowRight />
             </a>
