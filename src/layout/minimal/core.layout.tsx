@@ -57,6 +57,11 @@ export default function CoreLayout({ pageKey, slots = {}, children }: CoreLayout
       );
 
       parent.style.setProperty(
+        '--scroll-to-zero-pointer-events',
+        progress >= SCROLL_TO_ZERO_THRESHOLD ? 'auto' : 'none'
+      );
+
+      parent.style.setProperty(
         '--scroll-to-max-disable',
         progress >= SCROLL_TO_MAX_DISABLE_THRESHOLD ? '1' : '0'
       );

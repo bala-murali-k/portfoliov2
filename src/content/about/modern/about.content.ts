@@ -4,7 +4,7 @@ export const aboutContent: About = {
   hero: {
     title: "About Me",
     description: "This is the section for describing about me.",
-    availablity: "Available Now"
+    availability: "Available Now"
   },
   professionalTimeline: [],
   workProgress: [],

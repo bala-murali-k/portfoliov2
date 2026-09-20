@@ -184,7 +184,14 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
         {activeView === 'architecture' && (
           <div data-architecture-wrapper>
             {currentProject.architectureList ? (
-              <img src={`${import.meta.env.BASE_URL}${currentProject.architectureList}`} alt={`${currentProject.title} architecture`} />
+              <img
+                src={
+                  currentProject.architectureList.startsWith('http://') || currentProject.architectureList.startsWith('https://')
+                    ? currentProject.architectureList
+                    : `${import.meta.env.BASE_URL}${currentProject.architectureList.replace(/^\//, '')}`
+                }
+                alt={`${currentProject.title} architecture`}
+              />
             ) : (
               <p data-empty-notice>No architecture blueprint available.</p>
             )}
@@ -225,7 +232,11 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
             >
               {currentProject.imageSource && currentProject.isImageAvailable ? (
                 <img
-                  src={currentProject.imageSource}
+                  src={
+                    currentProject.imageSource.startsWith('http://') || currentProject.imageSource.startsWith('https://')
+                      ? currentProject.imageSource
+                      : `${import.meta.env.BASE_URL}${currentProject.imageSource.replace(/^\//, '')}`
+                  }
                   alt={currentProject.imageAltText || `${currentProject.title} screenshot`}
                 />
               ) : (

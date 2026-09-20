@@ -1,8 +1,3 @@
-import { library } from '@fortawesome/fontawesome-svg-core';
-
-import { fas } from '@fortawesome/free-solid-svg-icons';
-// import { far } from '@fortawesome/free-regular-svg-icons';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-
-// library.add(fas, far, fab);
-library.add(fas, fab);
+// FontAwesome icons used by components are imported individually to allow Vite tree-shaking
+// and prevent bundling the entire icon library.
+export {};

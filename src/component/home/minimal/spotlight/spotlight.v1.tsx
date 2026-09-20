@@ -34,7 +34,7 @@ export default function SpotlightV1({ content }: SpotlightProps) {
           </div>
           <div data-preview>
             <div data-preview-box>
-              <img src="/images/projects/portfolio_v2_ss.png" alt={content.title} />
+              <img src={`${import.meta.env.BASE_URL}images/projects/portfolio_v2_ss.png`} alt={content.title} />
             </div>
             <Link to={content.cta.href} data-cta>
               <ArrowUpRight /> {content.cta.label}

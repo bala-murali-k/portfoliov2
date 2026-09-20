@@ -5,12 +5,9 @@ import ModernNotFound from './modern/notfound';
 import MinimalNotFound from './minimal/notfound';
 
 /**
- * Registry of style id -> that style's own Contact implementation. Add a
- * new style by creating component/contact/<id>/contact.tsx (+ index.ts)
+ * Registry of style id -> that style's own NotFound implementation. Add a
+ * new style by creating component/404/<id>/notfound.tsx (+ index.ts)
  * and registering it here - nothing outside this file needs to change.
- *
- * No backend exists yet (per architecture: frontend-only for v1) - each
- * variant handles its own local-only submission state.
  */
 const variants: Record<string, ComponentType> = {
   modern: ModernNotFound,

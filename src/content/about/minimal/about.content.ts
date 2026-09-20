@@ -70,17 +70,17 @@ export const aboutContent: MinimalAboutContent = {
     {
       step: "01",
       title: "Discovery",
-      description: "Analyzing structural requirements and establishing decoupled schemas before writing markup[cite: 1]."
+      description: "Analyzing structural requirements and establishing decoupled schemas before writing markup."
     },
     {
       step: "02",
       title: "Execution",
-      description: "Implementing core layouts and swappable UI components utilizing strict TypeScript interfaces[cite: 1]."
+      description: "Implementing core layouts and swappable UI components utilizing strict TypeScript interfaces."
     },
     {
       step: "03",
       title: "Refinement",
-      description: "Optimizing viewport mechanics, accessibility, and smooth CSS entrance animations[cite: 1]."
+      description: "Optimizing viewport mechanics, accessibility, and smooth CSS entrance animations."
     }
   ],
   hobbies: {
@@ -89,7 +89,7 @@ export const aboutContent: MinimalAboutContent = {
       "Mechanical Keyboards",
       "Typography Design",
       "Minimalist Architecture",
-      "Reading & Watchig Sci-Fi"
+      "Reading & Watching Sci-Fi"
     ]
   }
 };

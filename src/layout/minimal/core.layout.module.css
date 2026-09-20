@@ -79,7 +79,7 @@
 /* Scroll to zero button functionality */
 .layout [data-region='main'] [layout-utility="scroll-to-zero"] {
   opacity: var(--scroll-to-zero-visible, 0);
-  pointer-events: auto;
+  pointer-events: var(--scroll-to-zero-pointer-events, none);
   position: sticky;
   left: 2rem;
   top: calc(100% - 42px - 0.8rem);

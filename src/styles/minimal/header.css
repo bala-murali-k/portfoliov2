@@ -19,7 +19,7 @@
     align-items: center;
     text-transform: capitalize;
     gap: 1.8rem;
-    font-weight: medium;
+    font-weight: 500;
 }
 
 [data-style='minimal'] [data-control='style-switcher'] button {

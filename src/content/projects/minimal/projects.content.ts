@@ -33,7 +33,7 @@ export const projectsContent: MinimalProject[] = [
     title: 'This Portfolio',
     description: 'Portfolio designed with strict separation of concerns, ensuring maintainable architecture, reusable components, scalable systems, and consistent user experiences.',
     tags: [],
-    link: 'http://localhost:5173/',
+    link: 'https://bala-murali-k.github.io/portfoliov2/',
     techStack: [
       { index: 1, stack: 'React', stackExpert: 90 },
       { index: 2, stack: 'TypeScript', stackExpert: 85 },
@@ -101,7 +101,7 @@ export const projectsContent: MinimalProject[] = [
     publicCodeSource: null
   },
   {
-    id: '1',
+    id: '2',
     title: 'This Portfolio',
     description: 'One line. That is all it needs.',
     tags: [],
