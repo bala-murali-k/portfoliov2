@@ -4,7 +4,7 @@ import Slot from './slot';
 import styles from './core.layout.module.css';
 import { CoreLayoutProps } from '../core.layout';
 import { subscribeToMinimalScroll } from '@/utils/hooks/minimal/use.minimal.scroll';
-import { ArrowLeft } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
 import { useMousePosition } from '@/utils/hooks/common/mouse.position';
 
 /**
@@ -20,10 +20,32 @@ export default function CoreLayout({ pageKey, slots = {}, children }: CoreLayout
   const mainRef = useRef<HTMLElement>(null);
   const mousePos = useMousePosition()
   const [isScrollToZeroHovered, setIsScrollToZeroHovered] = useState(false);
+  const [isScrollToPrevHovered, setIsScrollToPrevHovered] = useState(false);
+  const [isScrollToNextHovered, setIsScrollToNextHovered] = useState(false);
+  const [isScrollToMaxHovered, setIsScrollToMaxHovered] = useState(false);
+
   function resetScroll() {
     const main = mainRef.current;
     if (!main) return;
     main.scrollLeft = 0;
+  }
+
+  function scrollToPrev() {
+    const main = mainRef.current;
+    if (!main) return;
+    main.scrollBy({ left: -main.clientWidth, behavior: 'smooth' });
+  }
+
+  function scrollToNext() {
+    const main = mainRef.current;
+    if (!main) return;
+    main.scrollBy({ left: main.clientWidth, behavior: 'smooth' });
+  }
+
+  function scrollToMax() {
+    const main = mainRef.current;
+    if (!main) return;
+    main.scrollLeft = main.scrollWidth;
   }
 
   useEffect(() => {
@@ -40,11 +62,22 @@ export default function CoreLayout({ pageKey, slots = {}, children }: CoreLayout
     };
 
     const handleScroll = () => {
-      const maxScroll = main.scrollWidth - main.clientWidth;
-      if (maxScroll <= 0) return;
-      const progress = (main.scrollLeft / maxScroll) * 100;
       const parent = main.parentElement;
       if (!parent) return;
+
+      const maxScroll = main.scrollWidth - main.clientWidth;
+      if (maxScroll <= 0) {
+        parent.style.setProperty('--scroll-to-zero-visible', '0');
+        parent.style.setProperty('--scroll-to-zero-pointer-events', 'none');
+        parent.style.setProperty('--scroll-to-prev-visible', '0');
+        parent.style.setProperty('--scroll-to-prev-pointer-events', 'none');
+        parent.style.setProperty('--scroll-to-next-visible', '0');
+        parent.style.setProperty('--scroll-to-next-pointer-events', 'none');
+        parent.style.setProperty('--scroll-to-max-visible', '0');
+        parent.style.setProperty('--scroll-to-max-pointer-events', 'none');
+        return;
+      }
+      const progress = (main.scrollLeft / maxScroll) * 100;
 
       parent.style.setProperty(
         '--scroll-progress',
@@ -59,6 +92,36 @@ export default function CoreLayout({ pageKey, slots = {}, children }: CoreLayout
       parent.style.setProperty(
         '--scroll-to-zero-pointer-events',
         progress >= SCROLL_TO_ZERO_THRESHOLD ? 'auto' : 'none'
+      );
+
+      parent.style.setProperty(
+        '--scroll-to-prev-visible',
+        progress >= SCROLL_TO_ZERO_THRESHOLD ? '1' : '0'
+      );
+
+      parent.style.setProperty(
+        '--scroll-to-prev-pointer-events',
+        progress >= SCROLL_TO_ZERO_THRESHOLD ? 'auto' : 'none'
+      );
+
+      parent.style.setProperty(
+        '--scroll-to-next-visible',
+        progress >= SCROLL_TO_MAX_DISABLE_THRESHOLD ? '0' : '1'
+      );
+
+      parent.style.setProperty(
+        '--scroll-to-next-pointer-events',
+        progress >= SCROLL_TO_MAX_DISABLE_THRESHOLD ? 'none' : 'auto'
+      );
+
+      parent.style.setProperty(
+        '--scroll-to-max-visible',
+        progress >= SCROLL_TO_MAX_DISABLE_THRESHOLD ? '0' : '1'
+      );
+
+      parent.style.setProperty(
+        '--scroll-to-max-pointer-events',
+        progress >= SCROLL_TO_MAX_DISABLE_THRESHOLD ? 'none' : 'auto'
       );
 
       parent.style.setProperty(
@@ -105,7 +168,31 @@ export default function CoreLayout({ pageKey, slots = {}, children }: CoreLayout
           onMouseLeave={() => setIsScrollToZeroHovered(false)}
           layout-utility="scroll-to-zero"
         >
-          <ArrowLeft />
+          <ChevronsLeft />
+        </button>
+        <button
+          onClick={(event) => { event.preventDefault(), scrollToPrev() }}
+          onMouseEnter={() => setIsScrollToPrevHovered(true)}
+          onMouseLeave={() => setIsScrollToPrevHovered(false)}
+          layout-utility="scroll-to-prev"
+        >
+          <ChevronLeft />
+        </button>
+        <button
+          onClick={(event) => { event.preventDefault(), scrollToNext() }}
+          onMouseEnter={() => setIsScrollToNextHovered(true)}
+          onMouseLeave={() => setIsScrollToNextHovered(false)}
+          layout-utility="scroll-to-next"
+        >
+          <ChevronRight />
+        </button>
+        <button
+          onClick={(event) => { event.preventDefault(), scrollToMax() }}
+          onMouseEnter={() => setIsScrollToMaxHovered(true)}
+          onMouseLeave={() => setIsScrollToMaxHovered(false)}
+          layout-utility="scroll-to-max"
+        >
+          <ChevronsRight />
         </button>
         {children}
       </main>
@@ -122,6 +209,48 @@ export default function CoreLayout({ pageKey, slots = {}, children }: CoreLayout
             }}
           >
             Scroll to Left.
+          </div>
+        )
+      }
+      {
+        isScrollToPrevHovered && (
+          <div
+            data-layout-tooltip
+            data-visible="true"
+            style={{
+              left: `${mousePos.x + 12}px`,
+              top: `${mousePos.y + 12}px`,
+            }}
+          >
+            Scroll previous.
+          </div>
+        )
+      }
+      {
+        isScrollToNextHovered && (
+          <div
+            data-layout-tooltip
+            data-visible="true"
+            style={{
+              left: `${mousePos.x - 450}px`,
+              top: `${mousePos.y - 120}px`,
+            }}
+          >
+            Scroll next.
+          </div>
+        )
+      }
+      {
+        isScrollToMaxHovered && (
+          <div
+            data-layout-tooltip
+            data-visible="true"
+            style={{
+              left: `${mousePos.x - 320}px`,
+              top: `${mousePos.y - 120}px`,
+            }}
+          >
+            Scroll to End.
           </div>
         )
       }
