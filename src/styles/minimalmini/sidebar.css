@@ -1,0 +1,42 @@
+/* Sidebar rules for the "minimalmini" style.
+   Scoped under [data-style='minimalmini'] so it stays decoupled from minimal. */
+
+[data-style='minimalmini'] [data-slot='sidebar'] nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: stretch;
+  height: 100%;
+  flex: 1;
+  width: 100%;
+  margin: 0;
+  padding: 1rem 0;
+}
+
+[data-style='minimalmini'] [data-slot='sidebar'] nav a {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 16px;
+  color: var(--color-foreground);
+  text-decoration: none;
+  font-size: clamp(2rem, 7vw, 3rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+[data-style='minimalmini'] [data-slot='sidebar'] nav a[data-active] {
+  background: var(--color-accent, #3b82f6);
+  color: var(--color-background, #fff);
+  font-weight: 900;
+}
+
+[data-style='minimalmini'] [data-slot='sidebar'] nav a:hover:not([data-active]) {
+  background: var(--color-muted, rgba(125, 125, 125, 0.1));
+  color: var(--color-accent);
+  transform: translateX(8px);
+}

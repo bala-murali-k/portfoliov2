@@ -1,0 +1,139 @@
+/* Typography rules for the "minimalmini" mobile style.
+   Reserved home for font-family, sizes, weights, line-height.
+   Scoped under [data-style='minimalmini'] to stay decoupled from minimal. */
+
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+80s+Fade&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitcount+Single&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
+
+/* Header brand link font */
+[data-style='minimalmini'] [data-slot='header'] a {
+  font-family: var(--font-header, 'Bitcount Single', monospace, sans-serif);
+}
+
+/* Sidebar navigation links font */
+[data-style='minimalmini'] [data-slot='sidebar'] nav a {
+  font-family: var(--font-header, 'Bungee Hairline', system-ui, sans-serif);
+}
+
+/* Footer style switcher text - restored to old footer font family 'Rubik 80s Fade' */
+[data-style='minimalmini'] [data-slot='footer'] [data-control='style-switcher'] span,
+[data-style='minimalmini'] [data-slot='footer'] p {
+  font-family: var(--font-footer, 'Julius Sans One', sans-serif);
+}
+
+/* Reserved typography slots for minimalmini views */
+[data-style='minimalmini'] [data-component='hero'] h1 {
+  font-family: var(--font-hero, 'Monoton', cursive, sans-serif);
+}
+
+[data-style='minimalmini'] [data-component='intro'] h2,
+[data-style='minimalmini'] [data-component='expertise'] h2,
+[data-style='minimalmini'] [data-component='spotlight'] h2,
+[data-style='minimalmini'] [data-component='connect'] h2 {
+  font-family: var(--font-hero, 'Mozilla Headline', cursive, sans-serif);
+}
+
+[data-style='minimalmini'] [data-hero-subtitle-row] p,
+[data-style='minimalmini'] [data-hero-tagline] {
+  font-family: var(--font-hero, 'Stack Sans Headline', cursive, sans-serif);
+}
+
+[data-style='minimalmini'] [data-component='intro'] {
+  font-family: var(--font-hero, 'Stack Sans Headline', cursive, sans-serif);
+}
+
+[data-style='minimalmini'] [data-component='expertise'] {
+  font-family: var(--font-hero, 'Stack Sans Headline', cursive, sans-serif);
+}
+
+[data-style='minimalmini'] [data-component='spotlight'] {
+  font-family: var(--font-hero, 'Stack Sans Headline', cursive, sans-serif);
+}
+
+[data-style='minimalmini'] [data-component='spotlight'] h3 {
+  font-family: var(--font-header, 'Syncopate', sans-serif);
+}
+
+[data-style='minimalmini'] [data-component='connect'] {
+  font-family: var(--font-hero, 'Stack Sans Headline', cursive, sans-serif);
+}
+
+[data-style='minimalmini'] [data-component='not-found'] h1 {
+  font-family: var(--font-header, 'Julius Sans One', sans-serif);
+}
+
+/* Projects view typography rules */
+[data-style='minimalmini'] [data-component="projects-header-section"] h1 {
+  font-family: var(--font-header, 'Mozilla Headline', sans-serif);
+}
+
+[data-style='minimalmini'] [data-component="project-deco"] p {
+  font-family: var(--font-header, 'Stack Sans Headline', sans-serif);
+}
+
+[data-style='minimalmini'] [data-component="project-card"] h2 {
+  font-family: var(--font-header, 'Syncopate', sans-serif);
+}
+
+[data-style='minimalmini'] [data-project-desc] {
+  font-family: var(--font-hero, 'Stack Sans Headline', cursive, sans-serif);
+}
+
+[data-style='minimalmini'] [data-view-toggles] button,
+[data-style='minimalmini'] [data-status-badge],
+[data-style='minimalmini'] [data-version-indicator],
+[data-style='minimalmini'] [data-tech-stack-title] {
+  font-family: var(--font-header, 'Syncopate', sans-serif);
+}
+
+[data-style='minimalmini'] [data-features-list] {
+  font-family: var(--font-header, 'Stack Sans Headline', sans-serif);
+}
+
+/* Contact view typography rules */
+[data-style='minimalmini'] [data-component="contact-hero"] h1 {
+  font-family: var(--font-header, 'Mozilla Headline', sans-serif);
+}
+
+[data-style='minimalmini'] [data-component="contact-hero"] {
+  font-family: var(--font-header, 'Stack Sans Headline', sans-serif);
+}
+
+[data-style='minimalmini'] [data-component="contact-channels"] {
+  font-family: var(--font-header, 'Stack Sans Headline', sans-serif);
+}
+
+[data-style='minimalmini'] [data-component="contact-form"] {
+  font-family: var(--font-header, 'Stack Sans Headline', sans-serif);
+}
+
+/* About view typography rules */
+[data-style='minimalmini'] [data-component='about-hero-section'] h2 {
+  font-family: var(--font-header, 'Mozilla Headline', sans-serif);
+}
+
+[data-style='minimalmini'] [data-component="about-hero-section"] {
+  font-family: var(--font-header, 'Stack Sans Headline', sans-serif);
+}
+
+[data-style='minimalmini'] [data-slot="timeline-role"] {
+  font-family: var(--font-hero, 'Mozilla Headline', cursive, sans-serif);
+}
+
+[data-style='minimalmini'] [data-slot="timeline-period"] {
+  font-family: var(--font-header, 'Syncopate', sans-serif);
+}
+
+[data-style='minimalmini'] [data-component='about-inside-mind'] [data-slot="step-title"] {
+  font-family: var(--font-hero, 'Mozilla Headline', cursive, sans-serif);
+}
+
+[data-style='minimalmini'] [data-component='about-inside-mind'] [data-slot="step-num"] {
+  font-family: var(--font-header, 'Syncopate', sans-serif);
+}

@@ -3,6 +3,7 @@ import { useStyle } from '@context/global/style-context';
 import { defaultStyleId } from '@styles/index';
 import ModernHome from './modern';
 import MinimalHome from './minimal';
+import MinimalMiniHome from './minimalmini';
 
 /**
  * Registry of style id -> that style's own Home implementation. Add a new
@@ -12,6 +13,7 @@ import MinimalHome from './minimal';
 const variants: Record<string, ComponentType> = {
   modern: ModernHome,
   minimal: MinimalHome,
+  minimalmini: MinimalMiniHome,
 };
 
 export default function CoreHome() {

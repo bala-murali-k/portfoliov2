@@ -3,6 +3,7 @@ import { useStyle } from '@context/global/style-context';
 import { defaultStyleId } from '@styles/index';
 import ModernStyleSwitcher from './modern';
 import MinimalStyleSwitcher from './minimal';
+import MinimalMiniStyleSwitcher from './minimalmini';
 
 /**
  * Registry of style id -> that style's own StyleSwitcher implementation.
@@ -13,6 +14,7 @@ import MinimalStyleSwitcher from './minimal';
 const variants: Record<string, ComponentType> = {
   modern: ModernStyleSwitcher,
   minimal: MinimalStyleSwitcher,
+  minimalmini: MinimalMiniStyleSwitcher,
 };
 
 export default function CoreStyleSwitcher() {

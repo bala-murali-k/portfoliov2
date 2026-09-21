@@ -1,0 +1,19 @@
+/* Entry point for the "minimalmini" style's global CSS.
+   Visual rules (spacing, typography, scrollbar design, etc.) belong here,
+   not in layout/ - layout only owns structure and behavior. Add a new
+   style-owned CSS file by creating it in this folder and importing it
+   below. */
+
+@import './spacing.css';
+@import './typography.css';
+@import './scrollbar.css';
+@import './sidebar.css';
+@import './footer.css';
+@import './header.css';
+@import './home.css';
+@import './contact.css';
+@import './project.css';
+@import './variable.css';
+@import './support.css';
+@import './404.css';
+@import './about.css';

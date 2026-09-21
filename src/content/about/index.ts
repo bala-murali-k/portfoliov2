@@ -2,10 +2,12 @@ import type { About } from './about.content';
 import { aboutContent as defaultContent } from './about.content';
 import { aboutContent as minimalContent } from './minimal/about.content';
 import { aboutContent as modernContent } from './modern/about.content';
+import { aboutContent as minimalMiniContent } from './minimalmini/about.content';
 
 const contentMap: Record<string, About> = {
   minimal: minimalContent,
   modern: modernContent,
+  minimalmini: minimalMiniContent,
 };
 
 export function getAboutContent<T extends About = About>(styleId: string): T {

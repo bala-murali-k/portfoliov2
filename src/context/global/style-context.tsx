@@ -1,8 +1,9 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
-import { getStyleConfig, listStyleConfigs, defaultStyleId } from '@styles/index';
+import { getStyleConfig, listStyleConfigs, defaultStyleId, styleRegistry } from '@styles/index';
 import type { StyleConfig } from '@styles/types';
 import type { Theme } from '@theme/types';
+import { useMediaQuery } from '@/utils/hooks/common/use.media.query';
 
 const DEFAULT_THEME_ID = 'light';
 
@@ -20,8 +21,14 @@ interface StyleContextValue {
 const StyleContext = createContext<StyleContextValue | null>(null);
 
 export function StyleProvider({ children }: { children: ReactNode }) {
-  const [styleId, setStyleId] = useState(defaultStyleId);
+  const [selectedStyleId, setSelectedStyleId] = useState(defaultStyleId);
   const [themeId, setThemeId] = useState(DEFAULT_THEME_ID);
+  const isMini = useMediaQuery('(max-width: 800px)');
+
+  // When <= 800px is met, dynamically resolve `<styleId>mini` if it exists in styleRegistry
+  const styleId = isMini && styleRegistry[`${selectedStyleId}mini`]
+    ? `${selectedStyleId}mini`
+    : selectedStyleId;
 
   const style = getStyleConfig(styleId);
   const theme = style.themes[themeId] ?? style.themes[DEFAULT_THEME_ID];
@@ -41,8 +48,11 @@ export function StyleProvider({ children }: { children: ReactNode }) {
   }
 
   function switchStyle(nextStyleId: string) {
+    const baseId = nextStyleId.endsWith('mini')
+      ? nextStyleId.replace(/mini$/, '')
+      : nextStyleId;
     const next = getStyleConfig(nextStyleId);
-    setStyleId(next.id);
+    setSelectedStyleId(baseId);
     setThemeId(next.themes[DEFAULT_THEME_ID] ? DEFAULT_THEME_ID : Object.keys(next.themes)[0]);
   }
 
@@ -52,7 +62,7 @@ export function StyleProvider({ children }: { children: ReactNode }) {
       theme,
       styleId: style.id,
       themeId: theme.id,
-      availableStyles: listStyleConfigs(),
+      availableStyles: listStyleConfigs().filter((s) => !s.id.endsWith('mini')),
       availableThemes: Object.values(style.themes),
       toggleTheme,
       switchStyle,

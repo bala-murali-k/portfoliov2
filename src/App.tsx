@@ -23,7 +23,7 @@ export default function App() {
   const slots = {
     header: <Header />,
     footer: <Footer />,
-    ...(styleId === 'minimal' ? { sidebar: <Sidebar /> } : {}),
+    ...(styleId === 'minimal' || styleId === 'minimalmini' ? { sidebar: <Sidebar /> } : {}),
   };
 
   useEffect(() => {

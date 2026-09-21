@@ -3,6 +3,7 @@ import { useStyle } from '@context/global/style-context';
 import { defaultStyleId } from '@styles/index';
 import ModernProjects from './modern';
 import MinimalProjects from './minimal';
+import MinimalMiniProjects from './minimalmini';
 
 /**
  * Registry of style id -> that style's own Projects implementation. Add a
@@ -12,6 +13,7 @@ import MinimalProjects from './minimal';
 const variants: Record<string, ComponentType> = {
   modern: ModernProjects,
   minimal: MinimalProjects,
+  minimalmini: MinimalMiniProjects,
 };
 
 export default function CoreProjects() {

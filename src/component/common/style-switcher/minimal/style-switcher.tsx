@@ -3,7 +3,8 @@ import { useStyle } from '@context/global/style-context';
 
 export default function StyleSwitcher() {
   const { styleId, availableStyles, switchStyle } = useStyle();
-  const index = availableStyles.findIndex((s) => s.id === styleId);
+  const baseId = styleId.replace(/mini$/, '');
+  const index = availableStyles.findIndex((s) => s.id === baseId || s.id === styleId);
   const current = availableStyles[index] ?? availableStyles[0];
 
   function go(offset: number) {

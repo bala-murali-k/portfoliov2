@@ -1,0 +1,11 @@
+/* Spacing rules for the "minimalmini" mobile style.
+   Reserved home for mobile spacing scales, touch gaps, and margins. */
+
+[data-style='minimalmini'] [data-slot='sidebar'] nav a {
+  letter-spacing: 0.04em;
+}
+
+[data-style='minimalmini'] [data-slot='footer'] [data-control='style-switcher'] {
+  letter-spacing: 0.08em;
+}
+

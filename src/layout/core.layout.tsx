@@ -2,6 +2,7 @@ import type { ComponentType, ReactNode } from 'react';
 import { useStyle } from '@context/global/style-context';
 import ModernLayout from './modern/core.layout';
 import MinimalLayout from './minimal/core.layout';
+import MinimalMiniLayout from './minimalmini/core.layout';
 
 export interface CoreLayoutSlots {
   header?: ReactNode;
@@ -23,6 +24,7 @@ export interface CoreLayoutProps {
 const layouts: Record<string, ComponentType<CoreLayoutProps>> = {
   modern: ModernLayout,
   minimal: MinimalLayout,
+  minimalmini: MinimalMiniLayout,
 };
 
 const fallbackStyleId = 'modern';

@@ -1,0 +1,17 @@
+/* Scrollbar rules for the "minimalmini" style.
+   Scoped under [data-layout='minimalmini'] so it stays decoupled from minimal. */
+
+[data-layout="minimalmini"] [data-region="main"] {
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+[data-layout="minimalmini"] [data-region="main"]::-webkit-scrollbar {
+  width: 4px;
+}
+
+[data-layout="minimalmini"] [data-region="main"]::-webkit-scrollbar-thumb {
+  background-color: var(--color-accent, currentColor);
+  border-radius: 4px;
+}
+

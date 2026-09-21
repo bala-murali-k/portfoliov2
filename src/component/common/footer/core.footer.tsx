@@ -3,6 +3,7 @@ import { useStyle } from '@context/global/style-context';
 import { defaultStyleId } from '@styles/index';
 import ModernFooter from './modern';
 import MinimalFooter from './minimal';
+import MinimalMiniFooter from './minimalmini';
 
 /**
  * Registry of style id -> that style's own Footer implementation. Add a
@@ -13,6 +14,7 @@ import MinimalFooter from './minimal';
 const variants: Record<string, ComponentType> = {
   modern: ModernFooter,
   minimal: MinimalFooter,
+  minimalmini: MinimalMiniFooter,
 };
 
 export default function CoreFooter() {

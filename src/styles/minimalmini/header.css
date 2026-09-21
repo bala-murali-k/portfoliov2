@@ -1,0 +1,43 @@
+/* Header rules for the "minimalmini" style.
+   Scoped under [data-style='minimalmini'] so it stays decoupled from minimal. */
+
+[data-style='minimalmini'] [data-slot='header'] header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+}
+
+[data-style='minimalmini'] [data-slot='header'] header a {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  text-decoration: none;
+  margin-right: auto;
+}
+
+[data-style='minimalmini'] [data-slot='header'] button {
+  background: transparent;
+  border: none;
+  color: var(--color-foreground);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem;
+  border-radius: 50%;
+  opacity: 0.8;
+  transition: opacity 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+[data-style='minimalmini'] [data-slot='header'] button:hover {
+  opacity: 1;
+  color: var(--color-accent);
+  transform: scale(1.15);
+}
+
+[data-style='minimalmini'] [data-slot='header'] button svg {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+

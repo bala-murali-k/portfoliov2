@@ -3,6 +3,7 @@ import { useStyle } from '@context/global/style-context';
 import { defaultStyleId } from '@styles/index';
 import ModernButton from './modern';
 import MinimalButton from './minimal';
+import MinimalMiniButton from './minimalmini';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
@@ -17,6 +18,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const variants: Record<string, ComponentType<ButtonProps>> = {
   modern: ModernButton,
   minimal: MinimalButton,
+  minimalmini: MinimalMiniButton,
 };
 
 export default function CoreButton(props: ButtonProps) {

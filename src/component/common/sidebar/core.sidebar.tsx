@@ -3,6 +3,7 @@ import { useStyle } from '@context/global/style-context';
 import { defaultStyleId } from '@styles/index';
 import ModernSidebar from './modern';
 import MinimalSidebar from './minimal';
+import MinimalMiniSidebar from './minimalmini';
 
 /**
  * Registry of style id -> that style's own Sidebar implementation. Add a
@@ -13,6 +14,7 @@ import MinimalSidebar from './minimal';
 const variants: Record<string, ComponentType> = {
   modern: ModernSidebar,
   minimal: MinimalSidebar,
+  minimalmini: MinimalMiniSidebar,
 };
 
 export default function CoreSidebar() {

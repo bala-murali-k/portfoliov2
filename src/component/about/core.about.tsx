@@ -3,6 +3,7 @@ import { useStyle } from '@context/global/style-context';
 import { defaultStyleId } from '@styles/index';
 import ModernAbout from './modern';
 import MinimalAbout from './minimal';
+import MinimalMiniAbout from './minimalmini';
 
 /**
  * Registry of style id -> that style's own About implementation. Add a new
@@ -12,6 +13,7 @@ import MinimalAbout from './minimal';
 const variants: Record<string, ComponentType> = {
   modern: ModernAbout,
   minimal: MinimalAbout,
+  minimalmini: MinimalMiniAbout,
 };
 
 export default function CoreAbout() {

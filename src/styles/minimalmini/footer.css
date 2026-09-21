@@ -1,0 +1,53 @@
+/* Footer rules for the "minimalmini" style.
+   Scoped under [data-style='minimalmini'] so it stays decoupled from minimal. */
+
+[data-style='minimalmini'] [data-slot='footer'] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+[data-style='minimalmini'] [data-slot='footer'] [data-component='footer-style-switcher'] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+[data-style='minimalmini'] [data-slot='footer'] [data-control='style-switcher'] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: clamp(1.2rem, 4vw, 1.6rem);
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+[data-style='minimalmini'] [data-slot='footer'] [data-control='style-switcher'] span {
+  display: inline-block;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  color: var(--color-foreground);
+}
+
+[data-style='minimalmini'] [data-slot='footer'] [data-control='style-switcher'] button {
+  background: transparent;
+  border: none;
+  color: var(--color-foreground);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.5rem;
+  opacity: 0.75;
+  transition: opacity 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+[data-style='minimalmini'] [data-slot='footer'] [data-control='style-switcher'] button:hover {
+  opacity: 1;
+  color: var(--color-accent);
+  transform: scale(1.15);
+}
+
