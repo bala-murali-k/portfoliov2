@@ -230,12 +230,12 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
               }
               onMouseLeave={handleMouseLeave}
             >
-              {currentProject.imageSource && currentProject.isImageAvailable ? (
+              {currentProject.imageSource.length > 0 && currentProject.isImageAvailable ? (
                 <img
                   src={
-                    currentProject.imageSource.startsWith('http://') || currentProject.imageSource.startsWith('https://')
-                      ? currentProject.imageSource
-                      : `${import.meta.env.BASE_URL}${currentProject.imageSource.replace(/^\//, '')}`
+                    currentProject.imageSource[0].startsWith('http://') || currentProject.imageSource[0].startsWith('https://')
+                      ? currentProject.imageSource[0]
+                      : `${import.meta.env.BASE_URL}${currentProject.imageSource[0].replace(/^\//, '')}`
                   }
                   alt={currentProject.imageAltText || `${currentProject.title} screenshot`}
                 />

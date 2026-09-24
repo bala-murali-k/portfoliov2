@@ -46,24 +46,6 @@ export const aboutContent: MinimalAboutContent = {
       role: "Frontend Engineer",
       organization: "Gove Technologies",
       summary: "Architecting modular, theme-agnostic React systems with strict separation of concerns and data-attribute styling."
-    },
-    {
-      period: "2024 — Present",
-      role: "Frontend Engineer",
-      organization: "Gove Technologies",
-      summary: "Architecting modular, theme-agnostic React systems with strict separation of concerns and data-attribute styling."
-    },
-    {
-      period: "2024 — Present",
-      role: "Frontend Engineer",
-      organization: "Gove Technologies",
-      summary: "Architecting modular, theme-agnostic React systems with strict separation of concerns and data-attribute styling."
-    },
-    {
-      period: "2024 — Present",
-      role: "Frontend Engineer",
-      organization: "Gove Technologies",
-      summary: "Architecting modular, theme-agnostic React systems with strict separation of concerns and data-attribute styling."
     }
   ],
   workProgress: [
