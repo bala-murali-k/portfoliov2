@@ -7,6 +7,7 @@ import Channels from './channels';
 import HeroV1 from './hero';
 import FinisherV1 from './finisher/finisher.v1';
 import { getContactContent } from '@content/contact';
+import { submitContact } from '@/utils/functions/common.helper.functions';
 
 /**
  * No backend exists yet (per architecture: frontend-only for v1).
@@ -23,16 +24,22 @@ export default function CoreContact() {
     email: '',
     message: '',
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState({type: '', message: ''});
 
   function handleChange(field: keyof ContactFormValues, value: string) {
     setValues((prev) => ({ ...prev, [field]: value }));
   }
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     console.log('Contact form submitted (no backend yet):', values);
-    setSubmitted(true);
+    const emailResult = await submitContact(values.name, values.email, values.message);
+    setSubmitted(emailResult)
+    setValues({
+      name: '',
+      email: '',
+      message: '',
+    })
   }
 
   return (
@@ -44,7 +51,7 @@ export default function CoreContact() {
         <HeroV1 />
       </section>
       <section data-component="contact-section-3">
-        <Form values={values} labels={contactContent.labels} onChange={handleChange} onSubmit={handleSubmit} />
+        <Form values={values} labels={contactContent.labels} onChange={handleChange} onSubmit={handleSubmit} submitStatus={submitted} />
       </section>
       <section data-component="contact-section-4">
         <FinisherV1 />

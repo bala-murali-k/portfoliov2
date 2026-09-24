@@ -1,5 +1,6 @@
+import { useState, useEffect } from 'react';
 import type { FormEvent } from 'react';
-import Button from '@component/common/button';
+import { CheckCircle2, AlertCircle, X } from 'lucide-react';
 import type { ContactData } from '@content/contact/contact.content';
 
 export interface ContactFormValues {
@@ -8,17 +9,36 @@ export interface ContactFormValues {
   message: string;
 }
 
-interface FormProps {
+export interface SnackbarState {
+  type: string;
+  message: string;
+}
+
+export interface FormProps {
   values: ContactFormValues;
   labels: ContactData['labels'];
   onChange: (field: keyof ContactFormValues, value: string) => void;
   onSubmit: (e: FormEvent) => void;
+  submitStatus?: SnackbarState;
 }
 
-import React from 'react';
+export default function FormV1({ values, labels, onChange, onSubmit, submitStatus }: FormProps) {
+  const [isOpen, setIsOpen] = useState(false);
 
-// Assuming FormProps is defined elsewhere
-export default function FormV1({ values, labels, onChange, onSubmit }: FormProps) {
+  useEffect(() => {
+    if (submitStatus?.message) {
+      setIsOpen(true);
+      const timer = setTimeout(() => {
+        setIsOpen(false);
+      }, 5000);
+      return () => clearTimeout(timer);
+    } else {
+      setIsOpen(false);
+    }
+  }, [submitStatus]);
+
+  const isSuccess = submitStatus?.type === 'success';
+
   return (
     <div data-component="contact-form">
       <form onSubmit={onSubmit}>
@@ -62,6 +82,35 @@ export default function FormV1({ values, labels, onChange, onSubmit }: FormProps
           {labels.submit} <span data-arrow>↗</span>
         </button>
       </form>
+
+      {submitStatus?.message && (
+        <div
+          data-snackbar
+          data-type={submitStatus.type}
+          data-visible={isOpen ? 'true' : 'false'}
+          role={isSuccess ? 'status' : 'alert'}
+          aria-live={isSuccess ? 'polite' : 'assertive'}
+        >
+          <div data-snackbar-content>
+            <span data-snackbar-icon aria-hidden="true">
+              {isSuccess ? (
+                <CheckCircle2 size={18} />
+              ) : (
+                <AlertCircle size={18} />
+              )}
+            </span>
+            <span data-snackbar-message>{submitStatus.message}</span>
+          </div>
+          <button
+            type="button"
+            data-snackbar-close
+            onClick={() => setIsOpen(false)}
+            aria-label="Close notification"
+          >
+            <X size={16} />
+          </button>
+        </div>
+      )}
     </div>
   );
 }
