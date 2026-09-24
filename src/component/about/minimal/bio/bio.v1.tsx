@@ -49,7 +49,7 @@ export default function MastheadV1({ content }: MastheadProps) {
               data-action-btn
               onClick={(e) => {
                 e.preventDefault();
-                requestMinimalScroll(22);
+                requestMinimalScroll(52);
               }}
             >
               {content.actionLabel}

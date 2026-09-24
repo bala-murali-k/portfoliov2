@@ -13,7 +13,11 @@
 
 /* Header brand link font */
 [data-style='minimalmini'] [data-slot='header'] a {
-  font-family: var(--font-header, 'Bitcount Single', monospace, sans-serif);
+  font-family: var(--font-header-link, 'Bitcount Single', monospace, sans-serif);
+}
+
+[data-style='minimalmini'] [data-slot='header'] {
+  font-family: var(--font-header, 'Syncopate', monospace, sans-serif);
 }
 
 /* Sidebar navigation links font */

@@ -238,12 +238,13 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
               }}
               onMouseLeave={() => { handleMouseLeave() }}
             >
-              {currentProject.imageSource.length > 0 && currentProject.isImageAvailable ? (
+              {currentProject.imageSource && currentProject.imageSource.length > 0 && currentProject.isImageAvailable ? (
                 <img
                   src={
-                    currentProject.imageSource[activeImageIndex].startsWith('http://') || currentProject.imageSource[activeImageIndex].startsWith('https://')
-                      ? currentProject.imageSource[activeImageIndex]
-                      : `${import.meta.env.BASE_URL}${currentProject.imageSource[activeImageIndex].replace(/^\//, '')}`
+                    (currentProject.imageSource[activeImageIndex] || currentProject.imageSource[0]).startsWith('http://') ||
+                    (currentProject.imageSource[activeImageIndex] || currentProject.imageSource[0]).startsWith('https://')
+                      ? (currentProject.imageSource[activeImageIndex] || currentProject.imageSource[0])
+                      : `${import.meta.env.BASE_URL}${(currentProject.imageSource[activeImageIndex] || currentProject.imageSource[0]).replace(/^\//, '')}`
                   }
                   alt={currentProject.imageAltText || `${currentProject.title} screenshot`}
                 />
@@ -252,13 +253,15 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
               )}
               
               {
-                currentProject.imageSource.length > 1 &&
+                currentProject.imageSource && currentProject.imageSource.length > 1 && (
                 <>
                 <button
                   type="button"
                   onClick={() => {
                     setActiveImageIndex((prev: number) => {
-                      return prev === 0 ? currentProject.imageSource.length - 1 : prev - 1
+                      const total = currentProject.imageSource?.length ?? 0;
+                      if (total === 0) return 0;
+                      return prev === 0 ? total - 1 : prev - 1;
                     })
                   }}
                   aria-label="Previous image"
@@ -269,7 +272,9 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
                   type="button"
                   onClick={() => {
                     setActiveImageIndex((prev: number) => {
-                      return currentProject.imageSource.length === prev + 1 ? 0 : prev + 1
+                      const total = currentProject.imageSource?.length ?? 0;
+                      if (total === 0) return 0;
+                      return total === prev + 1 ? 0 : prev + 1;
                     })
                   }}
                   aria-label="Next image"
@@ -277,11 +282,12 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
                   <ChevronRight />
                 </button>
                 </>
+                )
               }
             </div>
 
             {
-              currentProject.imageSource.length > 1 && (
+              currentProject.imageSource && currentProject.imageSource.length > 1 && (
                 <div data-image-indicators>
                   {currentProject.imageSource.map((_, idx) => (
                     <span

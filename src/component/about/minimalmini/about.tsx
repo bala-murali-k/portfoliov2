@@ -48,14 +48,14 @@ export default function MinimalMiniAbout() {
         </section>
       )}
 
-      {content.hobbies && (
+      {/* {content.hobbies && (
         <section
           data-component={`about-section-${3 + timelineList.length}`}
           data-section-type="hobbies"
         >
           <Hobbies content={content.hobbies} />
         </section>
-      )}
+      )} */}
     </div>
   );
 }
