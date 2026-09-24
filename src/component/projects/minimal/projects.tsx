@@ -2,7 +2,7 @@ import { useState, useMemo, type ReactNode } from 'react';
 import { useStyle } from '@context/global/style-context';
 import { getProjectsContent } from '@content/projects';
 import type { MinimalProject } from '@/content/projects/minimal/projects.content';
-import { ChevronsLeft, ChevronsRight, MoveUpRight } from 'lucide-react';
+import { ChevronsLeft, ChevronLeft, ChevronsRight, ChevronRight, MoveUpRight } from 'lucide-react';
 import { truncate } from '@/utils/functions/common.helper.functions';
 import ProjectPreviewDrawer from '@/component/common/support/explore.demo.support.component';
 
@@ -24,6 +24,8 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
   const [activeIndex, setActiveIndex] = useState(allVersions.length - 1);
   const [activeView, setActiveView] = useState<ActiveView>('preview');
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const [activeImageIndex, setActiveImageIndex] = useState<number>(0)
 
   const currentProject = allVersions[activeIndex];
 
@@ -78,7 +80,10 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
           <div data-component-section="project-meta-version">
             <button
               type="button"
-              onClick={() => hasLowerVersion && setActiveIndex((prev) => prev - 1)}
+              onClick={() => {
+                hasLowerVersion && setActiveIndex((prev) => prev - 1);
+                setActiveImageIndex(0);
+              }}
               disabled={!hasLowerVersion}
               aria-label="Previous version"
             >
@@ -102,7 +107,10 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
 
             <button
               type="button"
-              onClick={() => hasHigherVersion && setActiveIndex((prev) => prev + 1)}
+              onClick={() => {
+                hasHigherVersion && setActiveIndex((prev) => prev + 1);
+                setActiveImageIndex(0);
+              }}
               disabled={!hasHigherVersion}
               aria-label="Next version"
             >
@@ -203,7 +211,7 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
           <>
             <div
               data-preview-box
-              onMouseEnter={() =>
+              onMouseEnter={() => {
                 handleMouseEnter(
                   'image',
                   <div data-tooltip-chart>
@@ -227,22 +235,65 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
                     )}
                   </div>
                 )
-              }
-              onMouseLeave={handleMouseLeave}
+              }}
+              onMouseLeave={() => { handleMouseLeave() }}
             >
               {currentProject.imageSource.length > 0 && currentProject.isImageAvailable ? (
                 <img
                   src={
-                    currentProject.imageSource[0].startsWith('http://') || currentProject.imageSource[0].startsWith('https://')
-                      ? currentProject.imageSource[0]
-                      : `${import.meta.env.BASE_URL}${currentProject.imageSource[0].replace(/^\//, '')}`
+                    currentProject.imageSource[activeImageIndex].startsWith('http://') || currentProject.imageSource[activeImageIndex].startsWith('https://')
+                      ? currentProject.imageSource[activeImageIndex]
+                      : `${import.meta.env.BASE_URL}${currentProject.imageSource[activeImageIndex].replace(/^\//, '')}`
                   }
                   alt={currentProject.imageAltText || `${currentProject.title} screenshot`}
                 />
               ) : (
                 <p>{currentProject.title}</p>
               )}
+              
+              {
+                currentProject.imageSource.length > 1 &&
+                <>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveImageIndex((prev: number) => {
+                      return prev === 0 ? currentProject.imageSource.length - 1 : prev - 1
+                    })
+                  }}
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveImageIndex((prev: number) => {
+                      return currentProject.imageSource.length === prev + 1 ? 0 : prev + 1
+                    })
+                  }}
+                  aria-label="Next image"
+                >
+                  <ChevronRight />
+                </button>
+                </>
+              }
             </div>
+
+            {
+              currentProject.imageSource.length > 1 && (
+                <div data-image-indicators>
+                  {currentProject.imageSource.map((_, idx) => (
+                    <span
+                      key={idx}
+                      data-dot
+                      data-active={idx === activeImageIndex || undefined}
+                      onClick={() => setActiveImageIndex(idx)}
+                    />
+                  ))}
+                </div>
+              )
+            }
 
             {/* Explore Drawer Trigger */}
             <a

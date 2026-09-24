@@ -12,7 +12,7 @@ export interface MinimalProject extends Project {
   isOneVersion: boolean,
   featured: boolean,
   version: string,
-  year: number,
+  year: number | string,
   isHosted: boolean,
   isImageAvailable: boolean,
   isCodePublic: boolean,
@@ -94,7 +94,13 @@ export const projectsContent: MinimalProject[] = [
         architectureList: 'images/projects/Portfolio-Architecture-Image-v1.png',
         hostedLink: 'https://github.com/bala-murali-k/portfolio',
         imageType: 'Local',
-        imageSource: ['images/projects/portfolio_v1_ss.png'],
+        imageSource: [
+          'images/projects/portfolio/v1/portfolio_1_ss.png',
+          'images/projects/portfolio/v1/portfolio_2_ss.png',
+          'images/projects/portfolio/v1/portfolio_3_ss.png',
+          'images/projects/portfolio/v1/portfolio_4_ss.png',
+          'images/projects/portfolio/v1/portfolio_5_ss.png',
+        ],
         imageAltText: 'Home page screenshot',
         publicCodeLink: null,
         publicCodeSource: null
@@ -116,7 +122,12 @@ export const projectsContent: MinimalProject[] = [
     architectureList: 'images/projects/Portfolio-Architecture-Image.png',
     hostedLink: "https://bala-murali-k.github.io/portfoliov2/",
     imageType: 'Local',
-    imageSource: ['images/projects/portfolio_v2_ss.png'],
+    imageSource: [
+      'images/projects/portfolio/v2/portfolio_1_ss.png',
+      'images/projects/portfolio/v2/portfolio_2_ss.png',
+      'images/projects/portfolio/v2/portfolio_3_ss.png',
+      'images/projects/portfolio/v2/portfolio_4_ss.png',
+    ],
     imageAltText: 'Home page screenshot',
     publicCodeLink: null,
     publicCodeSource: null
