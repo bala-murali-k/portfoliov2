@@ -2,10 +2,9 @@ import { useState, useMemo } from 'react';
 import { useStyle } from '@context/global/style-context';
 import { getProjectsContent } from '@content/projects';
 import type { MinimalMiniProject } from '@/content/projects/minimalmini/projects.content';
-import { ChevronsLeft, ChevronsRight, MoveUpRight } from 'lucide-react';
+import { ChevronsLeft, ChevronsRight, MoveUpRight, BookOpen } from 'lucide-react';
 import ProjectPreviewDrawer from '@/component/common/support/explore.demo.support.component';
-
-type ActiveView = 'preview' | 'features' | 'architecture';
+import ProjectReadDrawer from '@/component/common/support/read.drawer.support.component';
 
 interface ProjectCardProps {
   initialProject: MinimalMiniProject;
@@ -18,8 +17,8 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
   }, [initialProject]);
 
   const [activeIndex, setActiveIndex] = useState(allVersions.length - 1);
-  const [activeView, setActiveView] = useState<ActiveView>('preview');
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isReadDrawerOpen, setIsReadDrawerOpen] = useState(false);
 
   const currentProject = allVersions[activeIndex];
 
@@ -29,7 +28,7 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
   const previewLink = currentProject.link || currentProject.hostedLink || null;
 
   return (
-    <div data-component="project-card" data-active-view={activeView}>
+    <div data-component="project-card">
       {/* Project Meta Section */}
       <div data-component-section="project-meta">
         <h2>{currentProject.title}</h2>
@@ -59,30 +58,6 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
               <ChevronsRight size={16} />
             </button>
           </div>
-
-          <div data-view-toggles>
-            <button
-              type="button"
-              data-active={activeView === 'preview'}
-              onClick={() => setActiveView('preview')}
-            >
-              preview
-            </button>
-            <button
-              type="button"
-              data-active={activeView === 'features'}
-              onClick={() => setActiveView('features')}
-            >
-              features
-            </button>
-            <button
-              type="button"
-              data-active={activeView === 'architecture'}
-              onClick={() => setActiveView('architecture')}
-            >
-              architecture
-            </button>
-          </div>
         </div>
 
         {/* Project Description & Specs */}
@@ -106,24 +81,23 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
 
       {/* Project Body Section */}
       <div data-component-section="project-body">
-        {/* Preview View */}
-        {activeView === 'preview' && (
-          <div data-preview-wrapper>
-            <div data-preview-box>
-              {currentProject.imageSource && currentProject.isImageAvailable ? (
-                <img
-                  src={
-                    currentProject.imageSource.startsWith('http://') || currentProject.imageSource.startsWith('https://')
-                      ? currentProject.imageSource
-                      : `${import.meta.env.BASE_URL}${currentProject.imageSource.replace(/^\//, '')}`
-                  }
-                  alt={currentProject.imageAltText || `${currentProject.title} screenshot`}
-                />
-              ) : (
-                <p>{currentProject.title}</p>
-              )}
-            </div>
+        <div data-preview-wrapper>
+          <div data-preview-box>
+            {currentProject.imageSource && currentProject.isImageAvailable ? (
+              <img
+                src={
+                  currentProject.imageSource.startsWith('http://') || currentProject.imageSource.startsWith('https://')
+                    ? currentProject.imageSource
+                    : `${import.meta.env.BASE_URL}${currentProject.imageSource.replace(/^\//, '')}`
+                }
+                alt={currentProject.imageAltText || `${currentProject.title} screenshot`}
+              />
+            ) : (
+              <p>{currentProject.title}</p>
+            )}
+          </div>
 
+          <div data-project-actions>
             <button
               type="button"
               data-cta-btn
@@ -131,69 +105,16 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
             >
               Explore <MoveUpRight size={16} />
             </button>
-
-            {/* Mobile Tech Stack Overview */}
-            {currentProject.techStack && currentProject.techStack.length > 0 && (
-              <div data-tech-stack>
-                <span data-tech-stack-title>Technologies</span>
-                <div data-tech-stack-list>
-                  {currentProject.techStack.map((item) => (
-                    <div key={item.index} data-tech-item>
-                      <div data-tech-label-row>
-                        <span data-tech-name>{item.stack}</span>
-                        <span data-tech-value>{item.stackExpert}%</span>
-                      </div>
-                      <div data-tech-bar-track>
-                        <div
-                          data-tech-bar-fill
-                          style={{ width: `${item.stackExpert}%` }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+            <button
+              type="button"
+              data-cta-btn
+              data-read-btn
+              onClick={() => setIsReadDrawerOpen(true)}
+            >
+              <BookOpen size={16} /> Read
+            </button>
           </div>
-        )}
-
-        {/* Features View */}
-        {activeView === 'features' && (
-          <div data-features-wrapper>
-            {currentProject.featuresList && currentProject.featuresList.length > 0 ? (
-              <ul data-features-list>
-                {currentProject.featuresList.map((feature, idx) => (
-                  <li key={idx} data-feature-item>
-                    <span data-feature-index>{String(idx + 1).padStart(2, '0')}</span>
-                    <p>{feature}</p>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p data-empty-notice>No feature specifications documented for this release.</p>
-            )}
-          </div>
-        )}
-
-        {/* Architecture View */}
-        {activeView === 'architecture' && (
-          <div data-architecture-wrapper>
-            {currentProject.architectureList ? (
-              <div data-architecture-img-box>
-                <img
-                  src={
-                    currentProject.architectureList.startsWith('http://') || currentProject.architectureList.startsWith('https://')
-                      ? currentProject.architectureList
-                      : `${import.meta.env.BASE_URL}${currentProject.architectureList.replace(/^\//, '')}`
-                  }
-                  alt={`${currentProject.title} architecture`}
-                />
-              </div>
-            ) : (
-              <p data-empty-notice>No architecture blueprint available.</p>
-            )}
-          </div>
-        )}
+        </div>
       </div>
 
       {/* Standalone Live Support Drawer */}
@@ -202,6 +123,18 @@ function ProjectCard({ initialProject }: ProjectCardProps) {
         onClose={() => setIsDrawerOpen(false)}
         title={currentProject.title}
         url={previewLink}
+        anchor="bottom"
+        height="92vh"
+      />
+
+      {/* Standalone Read Details Drawer (Technologies, Features & Architecture) */}
+      <ProjectReadDrawer
+        isOpen={isReadDrawerOpen}
+        onClose={() => setIsReadDrawerOpen(false)}
+        title={currentProject.title}
+        techStack={currentProject.techStack}
+        featuresList={currentProject.featuresList}
+        architectureList={currentProject.architectureList}
         anchor="bottom"
         height="92vh"
       />

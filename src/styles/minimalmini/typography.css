@@ -89,7 +89,7 @@
   font-family: var(--font-hero, 'Stack Sans Headline', cursive, sans-serif);
 }
 
-[data-style='minimalmini'] [data-view-toggles] button,
+[data-style='minimalmini'] [data-drawer-tab],
 [data-style='minimalmini'] [data-status-badge],
 [data-style='minimalmini'] [data-version-indicator],
 [data-style='minimalmini'] [data-tech-stack-title] {
