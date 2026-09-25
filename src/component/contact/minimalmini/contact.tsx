@@ -5,6 +5,7 @@ import { useStyle } from '@context/global/style-context';
 import Hero from './hero/hero';
 import Channels from './channels/channels';
 import Form, { type ContactFormValues } from './form/form';
+import { submitContact } from '@/utils/functions/common.helper.functions';
 
 /**
  * Minimal Mini Contact Page:
@@ -19,16 +20,22 @@ export default function MinimalMiniContact() {
     email: '',
     message: '',
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState({ type: '', message: '' });
 
   function handleChange(field: keyof ContactFormValues, value: string) {
     setValues((prev) => ({ ...prev, [field]: value }));
   }
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    console.log('Contact form submitted (local only):', values);
-    setSubmitted(true);
+    console.log('Contact form submitted:', values);
+    const emailResult = await submitContact(values.name, values.email, values.message);
+    setSubmitted(emailResult);
+    setValues({
+      name: '',
+      email: '',
+      message: '',
+    });
   }
 
   return (
@@ -43,10 +50,9 @@ export default function MinimalMiniContact() {
         <Form
           values={values}
           labels={contactContent.labels}
-          submitted={submitted}
-          successMessage={contactContent.successMessage}
           onChange={handleChange}
           onSubmit={handleSubmit}
+          submitStatus={submitted}
         />
       </section>
     </div>

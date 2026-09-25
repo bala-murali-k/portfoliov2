@@ -14,7 +14,7 @@ export default function Expertise({ content }: ExpertiseProps) {
             <li key={item.number} data-expertise-item>
               <div data-heading>
                 <div data-heading-main>
-                  <span data-index>{item.number}</span>
+                  {/* <span data-index>{item.number}</span> */}
                   <h3>{item.title}</h3>
                 </div>
                 <div data-bar>

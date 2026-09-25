@@ -9,8 +9,8 @@ export default function Hero({ content: _content }: HeroProps) {
   return (
     <div data-component="hero">
       <div data-hero-content>
-        <h1>BALA</h1>
-        <h1>MURALI</h1>
+        <h1>Bala</h1>
+        <h1>Murali</h1>
         <div data-hero-subtitle-row>
           <h1>K,</h1>
           <p>Software Engineer.</p>

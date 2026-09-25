@@ -6,6 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik+80s+Fade&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bitcount+Single&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@400;700&display=swap');
@@ -29,7 +30,7 @@
 }
 
 [data-style='minimal'] [data-component='hero'] h1 {
-   font-family: var(--font-hero, 'Monoton', cursive, sans-serif);
+   font-family: var(--font-hero, 'Righteous', cursive, sans-serif);
 }
 
 [data-style='minimal'] [data-component='hero'] div div>p {
