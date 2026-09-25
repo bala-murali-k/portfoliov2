@@ -12,7 +12,7 @@ export interface MinimalMiniProject extends Project {
   isOneVersion: boolean;
   featured: boolean;
   version: string;
-  year: number;
+  year: number | string;
   isHosted: boolean;
   isImageAvailable: boolean;
   isCodePublic: boolean;
@@ -21,7 +21,7 @@ export interface MinimalMiniProject extends Project {
   architectureList: string | null;
   hostedLink: string | null;
   imageType: 'Link' | 'Local' | null;
-  imageSource: string | null;
+  imageSource: string[] | null;
   imageAltText: string | null;
   publicCodeLink: string | null;
   publicCodeSource: string | null;
@@ -31,9 +31,8 @@ export const projectsContent: MinimalMiniProject[] = [
   {
     id: '1',
     title: 'This Portfolio',
-    description:
-      'Portfolio designed with strict separation of concerns, ensuring maintainable architecture, reusable components, scalable systems, and consistent user experiences.',
-    tags: [],
+    description: 'Portfolio designed with strict separation of concerns, ensuring maintainable architecture, reusable components, scalable systems, and consistent user experiences.',
+    tags: ['react'],
     link: 'https://bala-murali-k.github.io/portfoliov2/',
     techStack: [
       { index: 1, stack: 'React', stackExpert: 90 },
@@ -45,85 +44,126 @@ export const projectsContent: MinimalMiniProject[] = [
       { index: 7, stack: 'Git', stackExpert: 75 },
       { index: 8, stack: 'Node.js', stackExpert: 70 },
     ],
-    status: 'Ongoing',
+    status: "Ongoing",
     isOneVersion: false,
     featured: true,
     version: '2.0.0',
-    year: 2026,
+    year: "Jul 2026 - Present",
     isHosted: false,
     isImageAvailable: true,
     isCodePublic: false,
     versions: [
       {
-        id: '1',
-        title: 'This Portfolio',
-        description:
-          'Portfolio designed with strict separation of concerns, ensuring maintainable architecture, reusable components, scalable systems, and consistent user experiences.',
+        id: '1.1',
+        title: 'My Portfolio',
+        description: 'Personal portfolio site built with React, TypeScript, and Vite featuring light / dark / high-contrast theming, a working contact form, and a downloadable resume.',
         tags: [],
         link: 'https://bala-murali-k.github.io/portfolio/',
-        techStack: [],
-        status: 'Ongoing',
-        isOneVersion: false,
-        featured: true,
+        techStack: [
+          { index: 1, stack: 'React', stackExpert: 90 },
+          { index: 2, stack: 'TypeScript', stackExpert: 80 },
+          { index: 3, stack: 'Vite', stackExpert: 75 },
+          { index: 4, stack: 'React Router', stackExpert: 75 },
+          { index: 5, stack: 'MUI', stackExpert: 70 },
+          { index: 6, stack: 'Emotion', stackExpert: 60 },
+          { index: 7, stack: 'EmailJS', stackExpert: 60 },
+          { index: 8, stack: 'ESLint', stackExpert: 65 },
+          { index: 9, stack: 'pnpm', stackExpert: 70 },
+        ],
+        status: "Abandoned",
+        isOneVersion: true,
+        featured: false,
         version: '1.0.0',
-        year: 2026,
+        year: "Oct 2025 - Jun 2026",
         isHosted: true,
         isImageAvailable: true,
         isCodePublic: true,
         versions: [],
-        featuresList: [],
-        architectureList: null,
+        featuresList: [
+          "Multi-page portfolio site with client-side routing for Home, Work, Resume, and Contact, plus a catch-all error page.",
+          "Runtime-switchable theming system offering light, dark, and high-contrast MUI themes via a shared theme context.",
+          "Functional contact form that sends real emails directly from the browser using EmailJS, with submit status feedback.",
+          "Dedicated Work page listing projects through a reusable worklist section component.",
+          "Resume page with structured sections: summary, education, experience, leadership, projects, and quick facts.",
+          "Downloadable PDF resume served as a static asset, with a dedicated download call-to-action section.",
+          "Consistent shared layout (header / nav / footer) wrapping all pages via a central MainLayout component.",
+          "Modular, section-based component architecture separating each page into hero, core, and sub-section components.",
+          "Deployable as a static site to GitHub Pages using the gh-pages package and preconfigured homepage/deploy scripts.",
+          "Type-safe theming with a custom themes.d.ts declaration extending MUI's theme typing for custom palette tokens."
+        ],
+        architectureList: 'images/projects/Portfolio-Architecture-Image-v1.png',
         hostedLink: 'https://github.com/bala-murali-k/portfolio',
         imageType: 'Local',
-        imageSource: 'images/projects/portfolio_v1_ss.png',
+        imageSource: [
+          'images/projects/portfolio/v1/portfolio_1_ss.png',
+          'images/projects/portfolio/v1/portfolio_2_ss.png',
+          'images/projects/portfolio/v1/portfolio_3_ss.png',
+          'images/projects/portfolio/v1/portfolio_4_ss.png',
+          'images/projects/portfolio/v1/portfolio_5_ss.png',
+        ],
         imageAltText: 'Home page screenshot',
         publicCodeLink: null,
-        publicCodeSource: null,
-      },
+        publicCodeSource: null
+      }
     ],
     featuresList: [
-      'Structural page containers load self-contained UI modules via an index export layer for isolated component versioning.',
-      'Supports instant runtime switching between distinct visual styles via decoupled layout shells and centralized content resolvers.',
-      'Context-driven palette switching across light, dark, and custom themes using dynamic CSS design tokens.',
-      'Multi-column project showcases pairing truncated copy with framed media previews, tags, and direct route actions.',
-      'Non-looping segmented controls dynamically swap project release histories, changelogs, tech stacks, and screenshots in place.',
-      'Contextual triggers and dedicated architectural views highlight core structural paradigms and design choices.',
-      'Dynamic skills breakdowns, stack expertise bar charts, and deployment specs.',
-      'Tabular capability indexes featuring animated percentage progress bars and structured professional channel overviews.',
-      'Optimized layout mechanics adapt cleanly to native scrolling and responsive fallback containers for mobile screens.',
-      'Built with React, Vite, and TypeScript using a Core + Swappable-Children pattern and data-attribute styling isolation.',
+      "Structural page containers load self-contained UI modules via an index export layer for isolated component versioning.",
+      "Supports instant runtime switching between distinct visual styles via decoupled layout shells and centralized content resolvers.",
+      "Context-driven palette switching across light, dark, and custom themes using dynamic CSS design tokens.",
+      "Multi-column project showcases pairing truncated copy with framed media previews, tags, and direct route actions.",
+      "Non-looping segmented controls dynamically swap project release histories, changelogs, tech stacks, and screenshots in place.",
+      "Contextual triggers and dedicated architectural views highlight core structural paradigms and design choices.",
+      "Dynamic mouse-tracking floating tooltips display skills breakdowns, stack expertise bar charts, and deployment specs.",
+      "Tabular capability indexes featuring animated percentage progress bars and structured professional channel overviews.",
+      "Desktop optimized horizontal wheel acceleration and IntersectionObserver driven staggered entrance animations.",
+      "Desktop layout mechanics adapt cleanly to native scrolling and responsive fallback containers for mobile screens.",
+      "Built with React, Vite, and TypeScript using a Core + Swappable-Children pattern and data-attribute styling isolation."
     ],
     architectureList: 'images/projects/Portfolio-Architecture-Image.png',
-    hostedLink: null,
+    hostedLink: "https://bala-murali-k.github.io/portfoliov2/",
     imageType: 'Local',
-    imageSource: 'images/projects/portfolio_v2_ss.png',
+    imageSource: [
+      'images/projects/portfolio/v2/portfolio_1_ss.png',
+      'images/projects/portfolio/v2/portfolio_2_ss.png',
+      'images/projects/portfolio/v2/portfolio_3_ss.png',
+      'images/projects/portfolio/v2/portfolio_4_ss.png',
+    ],
     imageAltText: 'Home page screenshot',
     publicCodeLink: null,
-    publicCodeSource: null,
+    publicCodeSource: null
   },
   {
     id: '2',
-    title: 'This Portfolio',
-    description: 'One line. That is all it needs.',
-    tags: [],
-    link: 'https://example.com',
-    techStack: [],
-    status: 'Ongoing',
-    isOneVersion: false,
+    title: 'Jobtracker',
+    description: 'Portfolio designed with strict separation of concerns, ensuring maintainable architecture, reusable components, scalable systems, and consistent user experiences.',
+    tags: ['AlpineJS'],
+    link: 'https://jobtracker-8ywo.onrender.com/',
+    techStack: [
+      { index: 1, stack: 'TypeScript', stackExpert: 85 },
+      { index: 2, stack: 'Node.js', stackExpert: 80 },
+      { index: 3, stack: 'Express', stackExpert: 80 },
+      { index: 4, stack: 'EJS', stackExpert: 72 },
+      { index: 5, stack: 'SQLite', stackExpert: 75 },
+      { index: 6, stack: 'Commander.js', stackExpert: 75 },
+      { index: 7, stack: 'pnpm', stackExpert: 55 },
+      { index: 8, stack: 'Render', stackExpert: 50 },
+    ],
+    status: "Ongoing",
+    isOneVersion: true,
     featured: true,
-    version: '2.0.0',
-    year: 2026,
-    isHosted: false,
+    version: '1.0.2',
+    year: "2026 - Present",
+    isHosted: true,
     isImageAvailable: true,
     isCodePublic: false,
     versions: [],
     featuresList: [],
     architectureList: null,
-    hostedLink: null,
+    hostedLink: "https://jobtracker-8ywo.onrender.com/",
     imageType: 'Local',
-    imageSource: 'images/projects/portfolio_v2_ss.png',
+    imageSource: ['images/projects/portfolio_v2_ss.png'],
     imageAltText: 'Home page screenshot',
     publicCodeLink: null,
-    publicCodeSource: null,
-  },
+    publicCodeSource: null
+  }
 ];
