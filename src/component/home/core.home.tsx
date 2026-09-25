@@ -4,6 +4,7 @@ import { defaultStyleId } from '@styles/index';
 import ModernHome from './modern';
 import MinimalHome from './minimal';
 import MinimalMiniHome from './minimalmini';
+import TerminalHome from './terminal';
 
 /**
  * Registry of style id -> that style's own Home implementation. Add a new
@@ -14,6 +15,7 @@ const variants: Record<string, ComponentType> = {
   modern: ModernHome,
   minimal: MinimalHome,
   minimalmini: MinimalMiniHome,
+  terminal: TerminalHome,
 };
 
 export default function CoreHome() {

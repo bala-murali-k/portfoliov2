@@ -1,0 +1,11 @@
+/* Spacing rules for the "terminal" style */
+[data-style='terminal'] {
+  --spacing-container: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  [data-style='terminal'] {
+    --spacing-container: 1.25rem;
+  }
+}
+

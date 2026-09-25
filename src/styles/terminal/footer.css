@@ -1,0 +1,46 @@
+/* Footer rules for the "terminal" style */
+[data-style='terminal'] [data-region='footer'] footer,
+[data-style='terminal'] [data-component='terminal-footer'] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.25rem 2.5rem;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--color-muted, #8b949e);
+  border-top: 1px dashed var(--color-border, #30363d);
+}
+
+[data-style='terminal'] [data-component='terminal-footer'] [data-copyright] {
+  font-size: 0.85rem;
+  color: var(--color-muted, #8b949e);
+}
+
+[data-style='terminal'] [data-component='terminal-footer'] [data-footer-links] {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+[data-style='terminal'] [data-component='terminal-footer'] [data-footer-links] a {
+  font-size: 0.85rem;
+  color: var(--color-muted, #8b949e);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+[data-style='terminal'] [data-component='terminal-footer'] [data-footer-links] a:hover {
+  color: var(--color-foreground, #39d353);
+}
+
+@media (max-width: 640px) {
+  [data-style='terminal'] [data-region='footer'] footer,
+  [data-style='terminal'] [data-component='terminal-footer'] {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+

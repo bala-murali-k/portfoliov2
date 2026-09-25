@@ -4,6 +4,7 @@ import { defaultStyleId } from '@styles/index';
 import ModernFooter from './modern';
 import MinimalFooter from './minimal';
 import MinimalMiniFooter from './minimalmini';
+import TerminalFooter from './terminal';
 
 /**
  * Registry of style id -> that style's own Footer implementation. Add a
@@ -15,6 +16,7 @@ const variants: Record<string, ComponentType> = {
   modern: ModernFooter,
   minimal: MinimalFooter,
   minimalmini: MinimalMiniFooter,
+  terminal: TerminalFooter,
 };
 
 export default function CoreFooter() {

@@ -4,6 +4,7 @@ import { defaultStyleId } from '@styles/index';
 import ModernProjects from './modern';
 import MinimalProjects from './minimal';
 import MinimalMiniProjects from './minimalmini';
+import TerminalProjects from './terminal';
 
 /**
  * Registry of style id -> that style's own Projects implementation. Add a
@@ -14,6 +15,7 @@ const variants: Record<string, ComponentType> = {
   modern: ModernProjects,
   minimal: MinimalProjects,
   minimalmini: MinimalMiniProjects,
+  terminal: TerminalProjects,
 };
 
 export default function CoreProjects() {

@@ -4,6 +4,7 @@ import { defaultStyleId } from '@styles/index';
 import ModernButton from './modern';
 import MinimalButton from './minimal';
 import MinimalMiniButton from './minimalmini';
+import TerminalButton from './terminal';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
@@ -19,6 +20,7 @@ const variants: Record<string, ComponentType<ButtonProps>> = {
   modern: ModernButton,
   minimal: MinimalButton,
   minimalmini: MinimalMiniButton,
+  terminal: TerminalButton,
 };
 
 export default function CoreButton(props: ButtonProps) {

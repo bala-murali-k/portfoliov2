@@ -4,6 +4,7 @@ import { defaultStyleId } from '@styles/index';
 import ModernStyleSwitcher from './modern';
 import MinimalStyleSwitcher from './minimal';
 import MinimalMiniStyleSwitcher from './minimalmini';
+import TerminalStyleSwitcher from './terminal';
 
 /**
  * Registry of style id -> that style's own StyleSwitcher implementation.
@@ -15,6 +16,7 @@ const variants: Record<string, ComponentType> = {
   modern: ModernStyleSwitcher,
   minimal: MinimalStyleSwitcher,
   minimalmini: MinimalMiniStyleSwitcher,
+  terminal: TerminalStyleSwitcher,
 };
 
 export default function CoreStyleSwitcher() {

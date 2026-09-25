@@ -4,6 +4,7 @@ import { defaultStyleId } from '@styles/index';
 import ModernNotFound from './modern/notfound';
 import MinimalNotFound from './minimal/notfound';
 import MinimalMiniNotFound from './minimalmini/notfound';
+import TerminalNotFound from './terminal/notfound';
 
 /**
  * Registry of style id -> that style's own NotFound implementation. Add a
@@ -14,6 +15,7 @@ const variants: Record<string, ComponentType> = {
   modern: ModernNotFound,
   minimal: MinimalNotFound,
   minimalmini: MinimalMiniNotFound,
+  terminal: TerminalNotFound,
 };
 
 export default function CoreNotFound() {

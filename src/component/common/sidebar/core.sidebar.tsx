@@ -4,6 +4,7 @@ import { defaultStyleId } from '@styles/index';
 import ModernSidebar from './modern';
 import MinimalSidebar from './minimal';
 import MinimalMiniSidebar from './minimalmini';
+import TerminalSidebar from './terminal';
 
 /**
  * Registry of style id -> that style's own Sidebar implementation. Add a
@@ -15,6 +16,7 @@ const variants: Record<string, ComponentType> = {
   modern: ModernSidebar,
   minimal: MinimalSidebar,
   minimalmini: MinimalMiniSidebar,
+  terminal: TerminalSidebar,
 };
 
 export default function CoreSidebar() {

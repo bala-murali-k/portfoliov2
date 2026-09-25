@@ -4,6 +4,7 @@ import { defaultStyleId } from '@styles/index';
 import ModernContact from './modern';
 import MinimalContact from './minimal';
 import MinimalMiniContact from './minimalmini';
+import TerminalContact from './terminal';
 
 /**
  * Registry of style id -> that style's own Contact implementation. Add a
@@ -17,6 +18,7 @@ const variants: Record<string, ComponentType> = {
   modern: ModernContact,
   minimal: MinimalContact,
   minimalmini: MinimalMiniContact,
+  terminal: TerminalContact,
 };
 
 export default function CoreContact() {

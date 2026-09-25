@@ -1,0 +1,95 @@
+/* Header rules for the "terminal" style */
+[data-style='terminal'] [data-region='header'] header,
+[data-style='terminal'] [data-component='terminal-header'] {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  width: 100%;
+  padding: 1.25rem 2.5rem;
+  box-sizing: border-box;
+  font-family: inherit;
+  border-bottom: 1px dashed var(--color-border, #30363d);
+}
+
+[data-style='terminal'] [data-component='terminal-header'] [data-brand] {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-accent, #39d353);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+[data-style='terminal'] [data-component='terminal-header'] [data-center-control] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-style='terminal'] [data-control='style-switcher'] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-family: inherit;
+  color: var(--color-muted, #8b949e);
+}
+
+[data-style='terminal'] [data-control='style-switcher'] span {
+  display: inline-block;
+  line-height: 1;
+  color: var(--color-foreground, #39d353);
+  font-size: 0.85rem;
+  user-select: none;
+}
+
+[data-style='terminal'] [data-control='style-switcher'] button {
+  background: transparent;
+  border: none;
+  color: var(--color-muted, #8b949e);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem;
+  border-radius: 0.2rem;
+  opacity: 0.8;
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+
+[data-style='terminal'] [data-control='style-switcher'] button:hover {
+  opacity: 1;
+  color: var(--color-accent, #39d353);
+}
+
+[data-style='terminal'] [data-component='terminal-header'] nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.5rem;
+}
+
+[data-style='terminal'] [data-component='terminal-header'] nav a {
+  font-size: 0.875rem;
+  font-family: inherit;
+  color: var(--color-muted, #8b949e);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+[data-style='terminal'] [data-component='terminal-header'] nav a:hover,
+[data-style='terminal'] [data-component='terminal-header'] nav a[data-active='true'] {
+  color: var(--color-foreground, #39d353);
+}
+
+@media (max-width: 640px) {
+  [data-style='terminal'] [data-region='header'] header,
+  [data-style='terminal'] [data-component='terminal-header'] {
+    padding: 0.85rem 1rem;
+  }
+
+  [data-style='terminal'] [data-component='terminal-header'] nav {
+    gap: 1rem;
+  }
+}
+

@@ -2,6 +2,7 @@ import type { StyleConfig } from './types';
 import { modernConfig } from './modern/config';
 import { minimalConfig } from './minimal/config';
 import { minimalMiniConfig } from './minimalmini/config';
+import { terminalConfig } from './terminal/config';
 
 // Each style's own CSS (spacing, typography, scrollbar, etc.) is scoped to
 // its [data-style='<id>'] attribute, so it's safe to load every style's
@@ -9,6 +10,7 @@ import { minimalMiniConfig } from './minimalmini/config';
 import './modern/index.css';
 import './minimal/index.css';
 import './minimalmini/index.css';
+import './terminal/index.css';
 
 /**
  * Aggregates every style's own config into one lookup map. This file does
@@ -20,6 +22,7 @@ export const styleRegistry: Record<string, StyleConfig> = {
   modern: modernConfig,
   minimal: minimalConfig,
   minimalmini: minimalMiniConfig,
+  terminal: terminalConfig,
 };
 
 export const defaultStyleId = 'minimal';

@@ -1,0 +1,22 @@
+/* Typography rules for the "terminal" style */
+[data-style='terminal'] {
+  font-family: ui-monospace, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  color: var(--color-foreground, #39d353);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[data-style='terminal'] h1,
+[data-style='terminal'] h2,
+[data-style='terminal'] h3 {
+  font-family: inherit;
+  color: var(--color-foreground, #39d353);
+  margin: 0;
+}
+
+[data-style='terminal'] p {
+  font-family: inherit;
+  color: var(--color-muted, #8b949e);
+  margin: 0;
+}
+

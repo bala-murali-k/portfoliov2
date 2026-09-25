@@ -4,6 +4,7 @@ import { defaultStyleId } from '@styles/index';
 import ModernAbout from './modern';
 import MinimalAbout from './minimal';
 import MinimalMiniAbout from './minimalmini';
+import TerminalAbout from './terminal';
 
 /**
  * Registry of style id -> that style's own About implementation. Add a new
@@ -14,6 +15,7 @@ const variants: Record<string, ComponentType> = {
   modern: ModernAbout,
   minimal: MinimalAbout,
   minimalmini: MinimalMiniAbout,
+  terminal: TerminalAbout,
 };
 
 export default function CoreAbout() {
