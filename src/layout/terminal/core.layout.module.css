@@ -8,6 +8,14 @@
   box-sizing: border-box;
 }
 
+.layout[data-real-terminal='true'] {
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100vh;
+  max-height: 100dvh;
+  overflow: hidden;
+}
+
 .headerRegion {
   width: 100%;
   flex-shrink: 0;
@@ -21,6 +29,19 @@
   justify-content: center;
   width: 100%;
   padding: 2rem 1.5rem;
+  box-sizing: border-box;
+}
+
+.mainRegionTerminal {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  align-items: stretch;
+  justify-content: flex-start;
+  overflow: hidden;
   box-sizing: border-box;
 }
 

@@ -1,26 +1,15 @@
-import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import StyleSwitcher from '../../style-switcher/core.style-switcher';
+import { useRealTerminalMode } from '@/utils/hooks/terminal/use.terminal.mode';
 import styles from './header.module.css';
 
 export default function TerminalHeader() {
   const location = useLocation();
 
-  const [isRealTerminal, setIsRealTerminal] = useState(() => {
-    try {
-      return localStorage.getItem('terminal_header_real') === 'true';
-    } catch {
-      return false;
-    }
-  });
+  const [isRealTerminal, setIsRealTerminal] = useRealTerminalMode();
 
   const handleToggle = (checked: boolean) => {
     setIsRealTerminal(checked);
-    try {
-      localStorage.setItem('terminal_header_real', String(checked));
-    } catch {
-      // Ignore storage errors
-    }
   };
 
   const handleClose = () => {
