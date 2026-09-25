@@ -1,28 +1,21 @@
-import type { ReactNode } from 'react';
 import Slot from './slot';
-
-interface LayoutSlots {
-  header?: ReactNode;
-  footer?: ReactNode;
-  sidebar?: ReactNode;
-}
-
-interface CoreLayoutProps {
-  slots?: LayoutSlots;
-  children: ReactNode;
-}
+import styles from './core.layout.module.css';
+import type { CoreLayoutProps } from '../core.layout';
 
 export default function CoreLayout({ slots = {}, children }: CoreLayoutProps) {
   return (
-    <div data-layout="modern">
-      <Slot name="header">{slots.header}</Slot>
-
-      <div data-region="body">
-        <Slot name="sidebar">{slots.sidebar}</Slot>
-        <main data-region="main">{children}</main>
+    <div className={styles.layout} data-layout="modern">
+      <div className={styles.headerRegion} data-region="header">
+        <Slot name="header">{slots.header}</Slot>
       </div>
 
-      <Slot name="footer">{slots.footer}</Slot>
+      <main className={styles.mainRegion} data-region="main">
+        {children}
+      </main>
+
+      <div className={styles.footerRegion} data-region="footer">
+        <Slot name="footer">{slots.footer}</Slot>
+      </div>
     </div>
   );
 }

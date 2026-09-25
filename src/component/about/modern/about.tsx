@@ -1,15 +1,9 @@
-import { useStyle } from '@context/global/style-context';
-import Bio from './bio';
-import { getAboutContent } from '@content/about';
+import Hero from '@/component/home/modern/hero';
 
-export default function CoreAbout() {
-  const { styleId } = useStyle();
-  const content = getAboutContent(styleId);
-
+export default function ModernAbout() {
   return (
-    <section data-component="core.about">
-      <h1>About</h1>
-      <Bio content={content} />
-    </section>
+    <div data-component="modern-home">
+      <Hero />
+    </div>
   );
 }

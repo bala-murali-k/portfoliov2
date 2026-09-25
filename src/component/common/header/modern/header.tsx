@@ -1,31 +1,44 @@
-import { Link } from 'react-router-dom';
-import { useStyle } from '@context/global/style-context';
-import { navContent } from '@content/common/nav.content';
-import ThemeSwitcher from '../../theme-switcher/core.theme-switcher';
+import { Link, useLocation } from 'react-router-dom';
 import StyleSwitcher from '../../style-switcher/core.style-switcher';
 import styles from './header.module.css';
 
 export default function Header() {
-  const { styleId } = useStyle();
-  const isMinimal = styleId === 'minimal';
+  const location = useLocation();
+
+  const navItems = [
+    { label: 'home', to: '/' },
+    { label: 'work', to: '/projects' },
+    { label: 'contact', to: '/contact' },
+  ];
 
   return (
-    <header className={styles.header}>
-      <span className={styles.brand}>Dev</span>
+    <header className={styles.header} data-component="modern-header">
+      <div className={styles.leftCol}>
+        <Link to="/" className={styles.brand} data-brand>
+          bala.
+        </Link>
+      </div>
 
-      {!isMinimal && (
-        <nav className={styles.nav}>
-          {navContent.map((item) => (
-            <Link key={item.to} to={item.to}>
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-      )}
-
-      <div className={styles.controls}>
+      <div className={styles.centerCol} data-center-control>
         <StyleSwitcher />
-        <ThemeSwitcher />
+      </div>
+
+      <div className={styles.rightCol}>
+        <nav className={styles.nav}>
+          {navItems.map((item) => {
+            const isActive = location.pathname === item.to;
+            return (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={isActive ? styles.activeLink : styles.navLink}
+                data-active={isActive ? 'true' : undefined}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+        </nav>
       </div>
     </header>
   );

@@ -1,0 +1,59 @@
+/* Coming Soon / Main content rules for the "modern" style */
+[data-style='modern'] [data-component='modern-coming-soon'],
+[data-style='modern'] [data-component='modern-home'] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+[data-style='modern'] [data-eyebrow] {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-muted, #737373);
+  margin-bottom: 1.25rem;
+}
+
+[data-style='modern'] [data-heading] {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--color-foreground, #111111);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0 0 1.25rem 0;
+}
+
+[data-style='modern'] [data-description] {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--color-muted, #666666);
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+[data-style='modern'] [data-switch-link] {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+[data-style='modern'] [data-switch-link]:hover {
+  color: var(--color-foreground, #111111);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+

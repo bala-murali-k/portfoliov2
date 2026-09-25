@@ -1,16 +1,9 @@
-import { useStyle } from '@context/global/style-context';
 import Hero from './hero';
-import Intro from './intro';
-import { getHomeContent } from '@content/home';
 
-export default function CoreHome() {
-  const { styleId } = useStyle();
-  const content = getHomeContent(styleId);
-
+export default function ModernHome() {
   return (
-    <section data-component="core.home">
-      <Hero content={content.hero} />
-      <Intro content={content.intro} />
-    </section>
+    <div data-component="modern-home">
+      <Hero />
+    </div>
   );
 }

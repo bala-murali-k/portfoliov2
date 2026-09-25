@@ -1,4 +1,10 @@
-/* Spacing rules for the "modern" style.
-   Wired up via the style's index.css - still empty on purpose until
-   real rules are needed.
-   Reserved home for margin/padding/gap scale, breakpoints. */
+/* Spacing rules for the "modern" style */
+[data-style='modern'] {
+  --spacing-container: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  [data-style='modern'] {
+    --spacing-container: 1.25rem;
+  }
+}

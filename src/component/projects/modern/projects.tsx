@@ -1,25 +1,9 @@
-import { useStyle } from '@context/global/style-context';
-import { getProjectsContent } from '@content/projects';
+import Hero from '@/component/home/modern/hero';
 
-export default function CoreProjects() {
-  const { styleId } = useStyle();
-  const projects = getProjectsContent(styleId);
-
+export default function ModernProjects() {
   return (
-    <section data-component="core.projects">
-      <h1>Projects</h1>
-      <ul>
-        {projects.map((project) => (
-          <li key={project.id}>
-            <h2>{project.title}</h2>
-            <p>{project.description}</p>
-            <p>{project.tags.join(', ')}</p>
-            <a href={project.link} target="_blank" rel="noreferrer">
-              View
-            </a>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <div data-component="modern-home">
+      <Hero />
+    </div>
   );
 }
